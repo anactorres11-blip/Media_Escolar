@@ -77,6 +77,21 @@ class _MediaEscolarPageState extends State<MediaEscolarPage>{
     }
 
     double mediaCalculada = (nota1 + nota2 + nota3) /3;
+
+    String situacaoCalculada;
+
+    if(mediaCalculada >=7){
+      situacaoCalculada = 'APROVADO';
+    }else if(mediaCalculada >=5){
+      situacaoCalculada = 'RECUPERAÇÃO';
+    }else{
+      situacaoCalculada = 'REPROVADO';
+    }
+    setState(() {
+      nomeAluno = nome;
+      media = mediaCalculada;
+      situacao
+    });
   }
 
   void mostrarMensagem(String mensagem){
@@ -178,6 +193,27 @@ class _MediaEscolarPageState extends State<MediaEscolarPage>{
             onPressed: (){},
             icon: const Icon(Icons.calculate),
             label: const Text('Calcular Média')
+            ),
+
+            const SizedBox(height: 25,),
+
+            if(situacao.isNotEmpty)
+            Card(
+              child:Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Text(
+                      nomeAluno,
+                      style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold
+                        ),
+                    ),
+                
+                  ],
+                ),
+              ),
             ),
 
           ],
